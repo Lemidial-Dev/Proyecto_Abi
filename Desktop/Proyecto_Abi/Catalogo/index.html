@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo de Productos</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+    <!-- Navbar / Header -->
+    <header class="bg-white shadow sticky top-0 z-10">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <h1 class="text-3xl font-bold text-blue-600">Tienda Online</h1>
+
+        <!-- Botón hamburguesa -->
+        <button
+          id="menu-toggle"
+          class="md:hidden text-gray-600 focus:outline-none"
+        >
+          ☰
+        </button>
+        <!-- Menú de navegación -->
+        <nav
+          id="menu"
+          class="hidden md:flex gap-6 text-gray-600 font-medium text-sm md:text-base"
+        >
+          <a href="#" class="hover:text-blue-500">Inicio</a>
+          <a href="#" class="hover:text-blue-500">Productos</a>
+          <a href="#" class="hover:text-blue-500">Contacto</a>
+        </nav>
+      </div>
+    </header>
+    <!-- Título Principal -->
+    <section class="py-12">
+      <h2 class="text-center text-4xl font-extrabold text-gray-800 mb-4">
+        Catálogo de Productos
+      </h2>
+      <p class="text-center text-gray-500 max-w-xl mx-auto">
+        Explora nuestra selección de productos disponibles
+      </p>
+    </section>
+    <!-- Sección de Búsqueda -->
+    <section class="max-w-7xl mx-auto px-6 mb-8">
+      <div class="flex flex-col gap-4 items-center">
+        <input
+          id="buscador"
+          type="text"
+          placeholder="Buscar productos..."
+          class="w-full max-w-md px-4 py-2 border-2 border-blue-400 rounded-lg "
+        />
+      </div>
+    </section>
+
+
+
+    <!-- Sección de Categorías -->
+    <section class="mb-10 text-center">
+      <div
+      id ="categorias" 
+      class="flex flex-wrap justify-center gap-3 justify-center">
+        
+      </div>
+    </section>
+
+    <!-- Contenedor de Productos -->
+    <main class="max-w-7xl mx-auto px-6 pb-16 flex-1">
+      <div
+        id="productos"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      >
+        <!-- Productos se cargarán aquí dinámicamente -->
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t py-6 mt-auto">
+      <div class="max-w-7xl mx-auto px-6 text-center text-gray-400 text-sm">
+        &copy; 2025 Tienda Online. Todos los derechos reservados.
+      </div>
+    </footer>
+  </body>
+  <script src="app.js"></script>
+</html>
