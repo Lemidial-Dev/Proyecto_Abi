@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detalle del Producto</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#272822] text-[#f8f8f2] min-h-screen flex flex-col">
+  <script>
+    if (!localStorage.getItem('token')) {
+      window.location.href = 'login.html';
+    }
+  </script>
+  <header class="bg-[#23231f] shadow fixed top-0 left-0 w-full z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-[#e6db74]">Detalle del Producto</h1>
+    </div>
+  </header>
+  <main class="flex-1 flex items-center justify-center pt-32">
+    <div id="detalle-producto" class="bg-[rgba(53,41,28,0.85)] rounded-2xl shadow-lg p-8 max-w-lg w-full border-2 border-[#3e3d32]">
+      <p class="text-center text-[#e6db74]">Cargando...</p>
+    </div>
+  </main>
+  <footer class="bg-[#23231f] border-t border-[#3e3d32] py-6 mt-auto">
+    <div class="max-w-7xl mx-auto px-6 text-center text-[#e6db74] text-sm">
+      &copy; 2025 Fake Store. Todos los derechos reservados.
+    </div>
+  </footer>
+  <script>
+    // Obtener el id de la URL
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const contenedor = document.getElementById('detalle-producto');
+
+    if (!id) {
+      contenedor.innerHTML = '<p class="text-red-500">ID de producto no especificado.</p>';
+    } else {
+      fetch(`https://fakestoreapi.com/products/${id}`)
+        .then(res => res.json())
+        .then(producto => {
+          // La primera letra de la categoría
+          const categoria = producto.category.charAt(0).toUpperCase() + producto.category.slice(1);
+
+          contenedor.innerHTML = `
+            <img src="${producto.image}" alt="${producto.title}" class="mx-auto h-48 mb-4 object-contain bg-[#232323] rounded-lg p-4" />
+            <h2 class="text-2xl font-bold mb-2 text-[#e6db74]">${producto.title}</h2>
+            <p class="mb-2"><span class="font-semibold text-[#e6db74]">Categoría:</span> <span class="text-[#f8f8f2]">${categoria}</span></p>
+            <p class="text-xl text-[#a6e22e] font-bold mb-4">$${producto.price}</p>
+            <p class="mb-4 text-[#f8f8f2]">${producto.description}</p>
+            <a href="index.html"
+               class="btn-abi categoria-btn mt-4">
+              Volver al catálogo
+            </a>
+          `;
+        })
+        .catch(() => {
+          contenedor.innerHTML = '<p class="text-red-500">No se pudo cargar el producto.</p>';
+        });
+    }
+  </script>
+</body>
+</html>

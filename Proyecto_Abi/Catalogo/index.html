@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo de Productos</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+     <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+    <!-- Header con botón cerrar sesión y hamburguesa juntos -->
+<header class="bg-[#23231f] shadow fixed top-0 left-0 w-full z-10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-[#e6db74]">Fake Store</h1>
+    <div class="flex items-center gap-2" style="position: relative;">
+      <!-- Botón hamburguesa solo con el ícono, sin óvalo ni fondo, pero sigue siendo interactivo -->
+<button id="menu-btn" class="flex items-center justify-center w-10 h-10 bg-transparent border-none outline-none focus:outline-none hover:bg-[#23231f]/20 transition" aria-label="Menú">
+  <svg class="w-7 h-7 text-[#e6db74] transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+  </svg>
+</button>
+      <button id="logout-btn" class="btn-abi hidden">Cerrar sesión</button>
+      <!-- Menú desplegable hamburguesa -->
+      <nav id="menu-opciones" class="hidden absolute right-6 mt-2 bg-[#23231f] border border-[#3e3d32] rounded-lg shadow-lg py-2 w-48 z-50">
+    <a href="#" data-vista="inicio" class="block px-4 py-2 text-[#e6db74] hover:bg-[#fd971f] hover:text-[#23231f] transition-colors">Catálogo</a>
+    <a href="#" data-vista="detalles" class="block px-4 py-2 text-[#e6db74] hover:bg-[#fd971f] hover:text-[#23231f] transition-colors">Detalles</a>
+    <a href="contacto.html" class="block px-4 py-2 text-[#e6db74] hover:bg-[#fd971f] hover:text-[#23231f] transition-colors">Contacto</a>
+  </nav>
+    </div>
+  </div>
+</header>
+<!-- Título Principal -->
+<section class="py-12">
+  <h2 class="text-center text-4xl font-extrabold text-gray-800 mb-4">
+    Detalles de Productos
+  </h2>
+  <p class="text-center text-gray-500 max-w-xl mx-auto">
+    Explora los detalles de nuestra selección de productos disponibles
+  </p>
+</section>
+<!-- Sección de Búsqueda -->
+<section class="max-w-7xl mx-auto px-6 mb-8">
+  <div class="flex flex-col gap-4 items-center">
+    <input
+      id="buscador"
+      type="text"
+      placeholder="Buscar productos..."
+      class="w-full max-w-md px-4 py-2 border-2 border-blue-400 rounded-lg "
+    />
+  </div>
+</section>
+
+<!-- Sección de Categorías -->
+<section class="mb-10 text-center">
+  <div
+  id="categorias" 
+  class="flex flex-wrap justify-center gap-3 justify-center">
+    
+  </div>
+</section>
+
+<!-- Contenedor de Productos con detalles -->
+<main class="max-w-7xl mx-auto px-6 pb-16 flex-1">
+  <div
+    id="productos"
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+  >
+    <!-- Los productos con detalles se cargarán aquí dinámicamente -->
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-white border-t py-6 mt-auto">
+  <div class="max-w-7xl mx-auto px-6 text-center text-gray-400 text-sm">
+    &copy; 2025 Fake Store. Todos los derechos reservados.
+  </div>
+</footer>
+<script src="app.js"></script>
+<script>
+if (!localStorage.getItem('token')) {
+  window.location.href = 'login.html';
+}
+</script>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="bg-[#272822] flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-[#23231f] shadow w-full fixed top-0 left-0 z-10">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-center items-center">
+        <h1 class="text-2xl font-bold text-[#e6db74]">Fake Store</h1>
+      </div>
+    </header>
+
+    <!-- Formulario centrado -->
+    <main class="flex-1 flex items-center justify-center pt-24">
+      <form
+        id="loginForm"
+        class="bg-[rgba(53,41,28,0.85)] shadow-lg rounded-2xl px-8 py-8 w-full max-w-sm border-2 border-[#3e3d32]"
+      >
+        <h2 class="text-2xl font-bold mb-6 text-center text-[#e6db74]">
+          Iniciar Sesión
+        </h2>
+
+        <label class="block mb-2 text-sm font-bold text-[#e6db74]">Usuario</label>
+        <input
+          type="text"
+          id="username"
+          required
+          class="w-full px-3 py-2 mb-4 rounded bg-[#3e3d32] text-[#f8f8f2] border border-[#75715e] focus:outline-none focus:ring-2 focus:ring-[#fd971f]"
+        />
+
+        <label class="block mb-2 text-sm font-bold text-[#e6db74]">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          required
+          class="w-full px-3 py-2 mb-4 rounded bg-[#3e3d32] text-[#f8f8f2] border border-[#75715e] focus:outline-none focus:ring-2 focus:ring-[#fd971f]"
+        />
+
+        <button
+          type="submit"
+          class="w-full bg-[#fd971f] hover:bg-[#e6db74] text-[#272822] font-bold py-2 rounded transition-colors"
+        >
+          Iniciar sesión
+        </button>
+
+        <p id="mensaje" class="text-center mt-4 text-sm text-[#e6db74]"></p>
+      </form>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#23231f] border-t border-[#3e3d32] py-6 mt-auto">
+      <div class="max-w-7xl mx-auto px-6 text-center text-[#e6db74] text-sm">
+        &copy; 2025 Fake Store. Todos los derechos reservados.
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+      if (localStorage.getItem('token')) {
+        window.location.href = 'index.html';
+      }
+    </script>
+  </body>
+</html>
